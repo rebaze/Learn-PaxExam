@@ -58,6 +58,11 @@ Because your test could end up in a totally different JVM (read Pax Runner Conta
 * You may optain context information via Parameter injection. See the Code Examples linked below for clarification. Its really simple.
 
 
+# Options
+
+The option system is quite unique to Pax Exam and is crucial to understand it.
+
+
 # Test Containers
 
 Currently Pax Exam ships with two really different TestContainer implementations:
@@ -85,11 +90,61 @@ or this:
          <scope>test</scope>
      </dependency>
 
+
 #### Pax Runner Test Container
 
+This is what you know if you've used Pax Exam 1.x.
+Internally, its been stripped down heavily, parts moved out of this implementation into Pax Exams core so other containers can the functionality.
+
+This container will launch a new Pax Runner instance as "TestContainer", which means your test will end up in a different JVM !
+So when debugging, you'll need to enable Remote Debugging in your IDE.
+
+Benefits:
+
+* New JVM means you have full control over which JVM will be used and what the options look like
+
+* Vast amount of additional options: use scan*() and profile() options which simplify your setup.
+
+
+Drawbacks:
+
+* May be slower (new Process launched). More computation happening crunching the arguments forth and back.
+
+* RMI Communication happening. This has been stabilized compared to Pax Exam 1. But its still networking with all its implications.
+
+Use it:
+
+ * when you need the Pax Runner specialties
 
 #### Native Test Container
 
+A brand new Test Container using OSGi Core 4.2 Launcher API.
+This means, you can simply add at least one compatible OSGi framework to your Test Setup like so:
+
+     <dependency>
+         <groupId>org.apache.felix</groupId>
+         <artifactId>org.apache.felix.framework</artifactId>
+         <version>${felixversion}</version>
+         <scope>test</scope>
+     </dependency>
+
+The Testcontainer will detect it ( or them, you may add more framework vendors) and launch it using the common API thanks to the launcher api standard.
+
+Benefits:
+
+* Really fast
+
+* Flawless debugging experience
+
+Drawbacks:
+
+ * Less options compared to the Pax Runner Test Container.
+
+ * Even if we could, this test container will not try to copy all the options the Pax Runner Container gives you. (like the profiles/scanner feature)
+
+Use it:
+
+ * by default. You don't get less options but also a slimmer call-stack. Less things that could go wrong.
 
 # Code Examples
 
@@ -115,3 +170,20 @@ When reading the examples, its best to have a focus on:
 # Differences to Pax Exam 1.x
 
 For switchers, here are some words about what has changed from Pax Exam 1.x.
+
+On the inside, Pax Exam 2 is an almost 80% rewrite of the "host" side. Which means, the workflow of how tests are gathered, constructed, Test Containers spawned, this has completely changed.
+With a focus on:
+
+* Stability
+
+* Ease for extension
+
+* Documentation
+
+As a user of Exam 1.x, you should be able to completely transition to Exam 2 with just changing the dependencies in your pom.xml. (or build.gradle)
+If you used Pax Exam API previously heavily, you might need to change some package-imports in your setup classes.
+
+What will not work:
+
+* Pax Exam Maven Plugin: This has been left out for future releases. Reason: it ties you to use the Pax Runner Test Container only.
+
