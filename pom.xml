@@ -8,6 +8,10 @@
 
     <name>Pax Exam Learning Center</name>
 
+    <properties>
+        <paxexamversion>2.0.0-RC3</paxexamversion>
+    </properties>
+    
     <profiles>
         <profile>
             <id>default</id>
