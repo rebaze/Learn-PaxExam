@@ -61,7 +61,31 @@ Because your test could end up in a totally different JVM (read Pax Runner Conta
 # Options
 
 The option system is quite unique to Pax Exam and is crucial to understand it.
+Simply put, you will configure your Test Setup (which includes which bundles you want to load, perhaps which frameworks (depends Test Container choice), etc.)
+programatically via static method calls, that are imported "statically" so it give you quite distraction-free, DSL-like configuration options with full IDE-code completion support.
 
+You add an import like this to the class that configures your test setup (this might be the Test Class itself or it might be entirely elsewhere, you can put it like you need it. Its simple Java laws).
+
+    import static org.ops4j.pax.exam.CoreOptions.*;
+    import static org.ops4j.pax.exam.LibraryOptions.*;
+
+This will give you the chance to use one or more of the factory methods. They all will return something that is assignable to
+
+    org.ops4j.pax.exam.Option
+    
+You will use a collection of this type via passing it to the TestContainer at construction time.
+Again, this is knowledge that you should have heard once, depending on how you will use Pax Exam you might not really care about where Options are used.
+
+What matters is, that the following imports might be helpful to discover options for your Test Case and eventually use them.
+Note that those classes live either in Pax Exam API (artifactId=pax-exam) or in Container specific artifacts like the following:
+
+    org.ops4j.pax.exam.container.def.PaxRunnerOptions
+    
+The class above comes from the PaxRunner-TestContainer implementation. Thus, it contains options that are just recognized when using the PaxRunner-TestContainer.
+Read below on how to "select" a test container implementation or just look at the tutorials at <https://github.com/tonit/Learn-PaxExam>.
+
+Those options form a lose collection (as mentioned). It does not necessarily mean that all options will be recognized or supported. 
+Its just a (the) way to configure Pax Exam.
 
 # Test Containers
 
