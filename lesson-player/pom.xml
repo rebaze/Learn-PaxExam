@@ -26,7 +26,14 @@
         <!-- Pax Exam Dependencies -->
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-swoosh</artifactId>
+            <artifactId>pax-exam-player</artifactId>
+            <version>${paxexamversion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-testforge</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
