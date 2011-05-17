@@ -17,8 +17,8 @@ package org.ops4j.pax.exam.lesson4;
 
 import org.junit.Test;
 import org.osgi.service.log.LogService;
-import org.ops4j.pax.exam.swoosh.Player;
-import org.ops4j.pax.exam.swoosh.probes.WaitForService;
+import org.ops4j.pax.exam.player.Player;
+import org.ops4j.pax.exam.testforge.WaitForService;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
 
@@ -30,7 +30,7 @@ import static org.ops4j.pax.exam.CoreOptions.*;
  * You see pretty much the essence of Pax Exam packed into a very small space:
  * - add Options
  * - add Tests/Probe
- * .. and you are ready to "play" (see  {@link org.ops4j.pax.exam.swoosh.Player#play()}
+ * .. and you are ready to "play" (see  {@link org.ops4j.pax.exam.player.Player#play()}
  *
  * This can be used anywwhere, not only in JUnit tests.
  */

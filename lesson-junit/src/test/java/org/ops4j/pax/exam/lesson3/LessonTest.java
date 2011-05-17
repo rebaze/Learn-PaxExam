@@ -93,7 +93,9 @@ public class LessonTest {
     public Option[] config()
     {
         return options(
-            junitBundles()
+            junitBundles(),
+            felix(),
+            equinox()
         );
     }
 

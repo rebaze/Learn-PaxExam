@@ -9,7 +9,7 @@
     <name>Pax Exam Learning Center</name>
 
     <properties>
-        <paxexamversion>2.0.0-RC3</paxexamversion>
+        <paxexamversion>2.0.0-RC4</paxexamversion>
     </properties>
     
     <profiles>

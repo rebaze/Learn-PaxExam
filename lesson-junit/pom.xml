@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
+            <artifactId>pax-exam-container-paxrunner</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
