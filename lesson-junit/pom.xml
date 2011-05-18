@@ -44,19 +44,11 @@
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- OSGi R4 frameworks -->
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>3.2.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.sonatype.tycho</groupId>
-            <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.6.2.R36x_v20110210</version>
+        
+         <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-testforge</artifactId>
+            <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
 
@@ -68,6 +60,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>org.ops4j.pax.runner</groupId>
+        	<artifactId>pax-runner-no-jcl</artifactId>
+        	<version>1.7.2-SNAPSHOT</version>
+        	<scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

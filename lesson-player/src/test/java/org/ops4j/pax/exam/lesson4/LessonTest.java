@@ -18,7 +18,9 @@ package org.ops4j.pax.exam.lesson4;
 import org.junit.Test;
 import org.osgi.service.log.LogService;
 import org.ops4j.pax.exam.player.Player;
+import org.ops4j.pax.exam.testforge.SingleClassProvider;
 import org.ops4j.pax.exam.testforge.WaitForService;
+import org.slf4j.LoggerFactory;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
 
@@ -42,10 +44,13 @@ public class LessonTest {
     {
         new Player().with(
             options(
-                mavenBundle().groupId( "org.ops4j.pax.logging" ).artifactId( "pax-logging-api" ).version( "1.6.1" ).startLevel( 1 ),
-                mavenBundle().groupId( "org.ops4j.pax.logging" ).artifactId( "pax-logging-service" ).version( "1.6.1" ).start()
+                mavenBundle().groupId( "org.ops4j.pax.logging" ).artifactId( "pax-logging-service" ).version( "1.6.2" ).start()
             )
-        ).test( WaitForService.class, LogService.class.getName(), 5000 ).play();
+        )
+        .test( WaitForService.class, LogService.class.getName(), 5000 )
+        // set skip systembundle=true because equinox is indeed loading LoggerFactory from a different source.
+        .test( SingleClassProvider.class, LoggerFactory.class.getName(), true )
+        .play();
 
     }
 }
