@@ -16,6 +16,7 @@
 package org.ops4j.pax.exam.lesson4;
 
 import org.junit.Test;
+import org.ops4j.pax.exam.testforge.WaitForService;
 import org.osgi.service.log.LogService;
 import org.ops4j.pax.exam.player.Player;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
