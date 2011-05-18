@@ -12,18 +12,11 @@
         <paxexamversion>2.0.0-RC6-SNAPSHOT</paxexamversion>
     </properties>
     
-    <profiles>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <modules>
-                <module>lesson-plumbing</module>
-                <module>lesson-porcelain</module>
-                <module>lesson-junit</module>
-                <module>lesson-player</module>
-            </modules>
-        </profile>
-    </profiles>
+    <modules>
+    	 <module>lesson-plumbing</module>
+         <module>lesson-porcelain</module>
+         <module>lesson-junit</module>
+         <module>lesson-player</module>
+         <module>lesson-cxf</module>
+    </modules>
 </project>
