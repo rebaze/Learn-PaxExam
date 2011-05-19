@@ -4,6 +4,8 @@ import static org.ops4j.pax.exam.LibraryOptions.easyMockBundles;
 import static org.ops4j.pax.exam.LibraryOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.OptionUtils.*;
+import static org.ops4j.pax.tinybundles.core.TinyBundles.*;
+import org.ops4j.pax.tinybundles.core.TinyBundles;
 
 import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.getTestContainerFactory;
 
@@ -18,6 +20,7 @@ import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.TestProbeProvider;
+import org.ops4j.pax.exam.apart.DoSomething;
 import org.ops4j.pax.exam.junit.Configuration;
 import org.ops4j.pax.exam.junit.JUnit4TestRunner;
 import org.ops4j.pax.exam.spi.container.PaxExamRuntime;
@@ -56,10 +59,43 @@ public class CXFLaboratories {
 	@Configuration
 	public Option[] configure() {
 		return options(
-				systemProperty( "org.ops4j.pax.logging.DefaultServiceLog.level").value("WARN"),
-				mavenBundle().groupId("org.apache.aries.blueprint").artifactId("org.apache.aries.blueprint").version("0.3"),
-				mavenBundle().groupId("org.apache.aries.proxy").artifactId("org.apache.aries.proxy").version("0.3"),
-				mavenBundle().groupId("org.apache.aries").artifactId("org.apache.aries.util").version("0.3")	
+				systemProperty( "org.ops4j.pax.logging.DefaultServiceLog.level").value("INFO"),
+				
+				
+				//mavenBundle().groupId("org.apache.aries.blueprint").artifactId("org.apache.aries.blueprint").version("0.3"),
+				//mavenBundle().groupId("org.apache.aries.proxy").artifactId("org.apache.aries.proxy").version("0.3"),
+				//mavenBundle().groupId("org.apache.aries").artifactId("org.apache.aries.util").version("0.3"),
+				mavenBundle().groupId("org.ops4j.pax.web").artifactId("pax-web-jetty-bundle").version("1.0.3"),
+				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.asm").version("3.3_2"),
+				
+				mavenBundle().groupId("org.apache.cxf").artifactId("cxf-bundle").version("2.4.0"),
+				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.javax.mail").version("1.4.1_4"),
+				mavenBundle().groupId("org.apache.geronimo.specs").artifactId("geronimo-stax-api_1.2_spec").version("1.0"),
+				mavenBundle().groupId("org.apache.geronimo.specs").artifactId("geronimo-activation_1.1_spec").version("1.1"),
+				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.wsdl4j").version("1.6.2_4"),
+				mavenBundle().groupId("org.apache.neethi").artifactId("neethi").version("3.0.0"),
+				mavenBundle().groupId("org.apache.ws.xmlschema").artifactId("xmlschema-core").version("2.0"),
+				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.xmlresolver").version("1.2_4"),
+				
+				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.aopalliance").version("1.0_5"),
+				
+				mavenBundle().groupId("org.springframework").artifactId("spring-core").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-asm").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-expression").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-beans").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-aop").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-context").version("3.0.5.RELEASE"),
+				mavenBundle().groupId("org.springframework").artifactId("spring-context-support").version("3.0.5.RELEASE"),
+								
+				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-io").version("1.2.1"),
+				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-core").version("1.2.1"),
+				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-extender").version("1.2.1"),
+				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-annotation").version("1.2.1"),
+				
+				provision( bundle( withBnd() )
+						.add (DoSomething.class )
+						.add( "META-INF/spring/spring.xml", getClass().getResource("/org/ops4j/pax/exam/apart/spring.xml") )
+						.build() )
 		);
 	}
 	
