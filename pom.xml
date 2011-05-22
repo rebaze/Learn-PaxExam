@@ -10,6 +10,8 @@
 
     <properties>
         <paxexamversion>2.0.0-RC6-SNAPSHOT</paxexamversion>
+        <paxrunnerversion>1.7.3</paxrunnerversion>
+        <paxurlversion>1.3.2</paxurlversion>
     </properties>
     
     <modules>

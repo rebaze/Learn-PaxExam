@@ -27,6 +27,7 @@ import static org.ops4j.pax.tinybundles.core.TinyBundles.withBnd;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ops4j.pax.exam.ExamSystem;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
@@ -89,7 +90,7 @@ public class CXFLaboratories {
 				
 				provision( bundle( withBnd() )
 						.add (DoSomething.class )
-						.add( "META-INF/spring/spring.xml", getClass().getResource("/org/ops4j/pax/exam/apart/spring.xml") )
+						.add( "META-INF/cxf/blablub.xml", getClass().getResource("/org/ops4j/pax/exam/apart/spring.xml") )
 						.build() )
 		);
 	}
@@ -115,14 +116,15 @@ public class CXFLaboratories {
 	public static void main(String[] args) throws Exception {
 		// add gogo set to the mix.
 		String gogoVersion = "0.8.0";
-		TestContainer container = PaxExamRuntime.createContainer( 
+		ExamSystem system = PaxExamRuntime.createSystem(
 				combine(new CXFLaboratories().configure(),options( 
-								mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.runtime").version(gogoVersion),
-								mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.shell").version(gogoVersion),
-								mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.command").version(gogoVersion)							
-				) ) );
+						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.runtime").version(gogoVersion),
+						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.shell").version(gogoVersion),
+						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.command").version(gogoVersion)							
+		) ) );
 		
-			container.start();
-			// Container will be stopped by user when main exits (either by issuing shell commands or hitting the kill button.
+		TestContainer container = PaxExamRuntime.createContainer( system );
+		container.start();
+		// Container will be stopped by user when main exits (either by issuing shell commands or hitting the kill button.
 	}
 }
