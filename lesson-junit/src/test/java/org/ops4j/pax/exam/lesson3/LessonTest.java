@@ -15,12 +15,15 @@
  */
 package org.ops4j.pax.exam.lesson3;
 
+import java.io.IOException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osgi.framework.BundleContext;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestProbeBuilder;
+import org.ops4j.pax.exam.TimeoutException;
 import org.ops4j.pax.exam.junit.Configuration;
 import org.ops4j.pax.exam.junit.ExamReactorStrategy;
 import org.ops4j.pax.exam.junit.JUnit4TestRunner;
@@ -28,11 +31,18 @@ import org.ops4j.pax.exam.spi.reactors.AllConfinedStagedReactorFactory;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
 import org.slf4j.LoggerFactory;
 
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createSystem;
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createContainer;
+
 import static org.hamcrest.core.Is.*;
 import static org.hamcrest.core.IsNull.*;
 import static org.junit.Assert.*;
 import static org.ops4j.pax.exam.CoreOptions.*;
+import static org.ops4j.pax.exam.OptionUtils.*;
+
 import static org.ops4j.pax.exam.LibraryOptions.*;
+import static org.ops4j.pax.exam.container.def.PaxRunnerOptions.*;
+
 
 /**
  * This is what's probably most known to Pax Exam 1.x users.
@@ -101,6 +111,15 @@ public class LessonTest {
             felix(),
             equinox()
         );
+    }
+    
+    public static void main(String[] args) throws TimeoutException, IOException {
+    	createContainer(
+    			createSystem(
+    					combine(
+		    			new LessonTest().config(),
+		    			profile("gogo")
+		    			))).start();
     }
 
     /**

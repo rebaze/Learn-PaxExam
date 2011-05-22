@@ -16,7 +16,10 @@
 package org.ops4j.pax.exam.lesson1;
 
 import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Test;
+import org.ops4j.pax.exam.ExamSystem;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
@@ -63,12 +66,12 @@ public class LessonTest {
          * So have a look at this projects pom.xml for some insight what choices you get from there.
          *
          */
-        Option[] options = new Option[]{
+    	ExamSystem system = createSystem( new Option[]{
             junitBundles(),
             easyMockBundles()
-        };
+        });
 
-        TestProbeProvider p = makeProbe();
+        TestProbeProvider p = makeProbe(system);
 
         /**
          * Here's where Pax Exam comes to life: you get a {@link TestContainerFactory}
@@ -92,7 +95,7 @@ public class LessonTest {
          * - stop
          *
          */
-        for( TestContainer testContainer : getTestContainerFactory().parse( options ) ) {
+        for( TestContainer testContainer : getTestContainerFactory().materializeContainers( system ) ) {
             try {
                 testContainer.start();
                 testContainer.install( p.getStream() );
@@ -114,10 +117,11 @@ public class LessonTest {
      *
      * @throws java.io.IOException Problems
      */
-    private TestProbeProvider makeProbe()
+    private TestProbeProvider makeProbe(ExamSystem system)
         throws IOException
     {
-        TestProbeBuilder probe = new PlumbingContext().createProbe();
+    	
+        TestProbeBuilder probe = system.createProbe( new Properties() );
         probe.addTest( Probe.class, "probe1" );
 
         probe.addTest( Probe.class, "probe2" );

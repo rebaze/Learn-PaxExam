@@ -15,8 +15,16 @@
  */
 package org.ops4j.pax.exam.lesson2;
 
+import static org.ops4j.pax.exam.LibraryOptions.easyMockBundles;
+import static org.ops4j.pax.exam.LibraryOptions.junitBundles;
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createSystem;
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.getTestContainerFactory;
+
 import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Test;
+import org.ops4j.pax.exam.ExamSystem;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainerFactory;
@@ -25,12 +33,8 @@ import org.ops4j.pax.exam.TestProbeProvider;
 import org.ops4j.pax.exam.spi.ExxamReactor;
 import org.ops4j.pax.exam.spi.StagedExamReactor;
 import org.ops4j.pax.exam.spi.StagedExamReactorFactory;
-import org.ops4j.pax.exam.spi.container.PlumbingContext;
 import org.ops4j.pax.exam.spi.driversupport.DefaultExamReactor;
 import org.ops4j.pax.exam.spi.reactors.AllConfinedStagedReactorFactory;
-
-import static org.ops4j.pax.exam.LibraryOptions.*;
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
 
 /**
  * This is a copy of lesson 1 but with a higher level abstraction on how we interact with TestContainers.
@@ -55,15 +59,14 @@ public class LessonTest {
         throws Exception
     {
         TestContainerFactory factory = getTestContainerFactory();
-
-        Option[] options = new Option[]{ junitBundles(), easyMockBundles() };
+        ExamSystem system = createSystem(new Option[]{ junitBundles(), easyMockBundles() });
 
         ExxamReactor reactor = new DefaultExamReactor( factory );
 
-        TestProbeProvider probe = makeProbe();
+        TestProbeProvider probe = makeProbe(system);
 
         reactor.addProbe( probe );
-        reactor.addConfiguration( options );
+        reactor.addConfiguration( system );
 
         StagedExamReactorFactory strategy = new AllConfinedStagedReactorFactory();
         StagedExamReactor stagedReactor = reactor.stage( strategy );
@@ -86,10 +89,10 @@ public class LessonTest {
      *
      * @throws java.io.IOException creating probe can fail.
      */
-    private TestProbeProvider makeProbe()
+    private TestProbeProvider makeProbe(ExamSystem system)
         throws IOException
     {
-        TestProbeBuilder probe = new PlumbingContext().createProbe();
+        TestProbeBuilder probe = system.createProbe( new Properties() );
         probe.addTest(
             Probe.class, "probe1"
         );
