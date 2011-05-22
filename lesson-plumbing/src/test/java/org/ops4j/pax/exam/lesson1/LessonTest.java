@@ -95,7 +95,7 @@ public class LessonTest {
          * - stop
          *
          */
-        for( TestContainer testContainer : getTestContainerFactory().materializeContainers( system ) ) {
+        for( TestContainer testContainer : getTestContainerFactory().create( system ) ) {
             try {
                 testContainer.start();
                 testContainer.install( p.getStream() );
