@@ -183,6 +183,7 @@ Here's what you find and the recommended order of reading:
 
 * <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-player>
 
+* <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-cxf>
 
 When reading the examples, its best to have a focus on:
 
