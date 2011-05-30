@@ -10,8 +10,9 @@
 
     <properties>
         <paxexamversion>2.1.0-SNAPSHOT</paxexamversion>
-        <paxrunnerversion>1.7.3</paxrunnerversion>
-        <paxurlversion>1.3.2</paxurlversion>
+        <paxrunnerversion>1.7.4</paxrunnerversion>
+        <paxurlversion>1.3.3</paxurlversion>
+        <felixversion>3.2.2</felixversion>
     </properties>
     
     <modules>
@@ -20,5 +21,8 @@
          <module>lesson-junit</module>
          <module>lesson-player</module>
          <module>lesson-cxf</module>
+         <module>lesson-nativecontainer</module>
+         <module>lesson-paxrunnercontainer</module>
+         <module>lesson-tinybundles</module>
     </modules>
 </project>

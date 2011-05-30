@@ -17,13 +17,9 @@
  */
 package org.ops4j.pax.exam.learn.cxf;
 
-import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
-import static org.ops4j.pax.exam.CoreOptions.options;
-import static org.ops4j.pax.exam.CoreOptions.provision;
-import static org.ops4j.pax.exam.CoreOptions.systemProperty;
+import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.OptionUtils.combine;
-import static org.ops4j.pax.tinybundles.core.TinyBundles.bundle;
-import static org.ops4j.pax.tinybundles.core.TinyBundles.withBnd;
+import static org.ops4j.pax.tinybundles.core.TinyBundles.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +35,7 @@ import org.ops4j.pax.exam.spi.container.PaxExamRuntime;
 import org.ops4j.pax.exam.testforge.BundlesInState;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -59,7 +56,7 @@ public class CXFLaboratories {
 	@Configuration
 	public Option[] configure() {
 		return options(
-				systemProperty( "org.ops4j.pax.logging.DefaultServiceLog.level").value("INFO"),
+				systemProperty( "org.ops4j.pax.logging.DefaultServiceLog.level").value("WARN"),
 				
 				mavenBundle().groupId("org.ops4j.pax.web").artifactId("pax-web-jetty-bundle").version("1.0.3"),
 				mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.asm").version("3.3_2"),
@@ -87,13 +84,24 @@ public class CXFLaboratories {
 				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-core").version("1.2.1"),
 				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-extender").version("1.2.1"),
 				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-annotation").version("1.2.1"),
+				//mavenBundle().groupId( "org.ops4j.pax.url").artifactId("pax-url-link" ).version( "1.3.2" ),
+				//mavenBundle().groupId( "org.ops4j.pax.url").artifactId("pax-url-aether" ).version( "1.3.2" ),
+				mavenBundle().groupId( "org.ops4j.pax.tinybundles" ).artifactId( "pax-tinybundles-core" ).version( "1.0.0-SNAPSHOT" ),
 				
-				provision( bundle( withBnd() )
+				provision( bundle( with() )
+				        .set( "Import-Package", "org.apache.cxf.bus.spring,org.slf4j" )
+				        .set("DynamicImport-Package","*")
 						.add (DoSomething.class )
-						.add( "META-INF/cxf/blablub.xml", getClass().getResource("/org/ops4j/pax/exam/apart/spring.xml") )
+						.add( "META-INF/spring/blablub.xml", getClass().getResource("/org/ops4j/pax/exam/apart/spring.xml") )
 						.build() )
 		);
 	}
+	
+	@Test
+    public void manualTest( BundleContext ctx )
+    {
+        
+    }
 	
 	@Test
 	public TestAddress saneLoggerFactory( TestProbeBuilder builder )
@@ -116,12 +124,18 @@ public class CXFLaboratories {
 	public static void main(String[] args) throws Exception {
 		// add gogo set to the mix.
 		String gogoVersion = "0.8.0";
-		ExamSystem system = PaxExamRuntime.createSystem(
+		ExamSystem system = PaxExamRuntime.createServerSystem(
 				combine(new CXFLaboratories().configure(),options( 
+				        // those two bundles are loaded automatically when using the test container.
+				        // but you don't get anything pre-loaded in "Server Mode".
+				        mavenBundle().groupId("org.ops4j.pax.logging").artifactId("pax-logging-api").version("1.6.1"),
+				        mavenBundle().groupId("org.osgi").artifactId("org.osgi.compendium").version("4.2.0"),
+                        
 						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.runtime").version(gogoVersion),
 						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.shell").version(gogoVersion),
-						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.command").version(gogoVersion)							
-		) ) );
+						mavenBundle().groupId("org.apache.felix").artifactId("org.apache.felix.gogo.command").version(gogoVersion),				
+						workingDirectory( System.getProperty( "user.dir") +  "/target/server" )
+				) ) );
 		
 		TestContainer container = PaxExamRuntime.createContainer( system );
 		container.start();

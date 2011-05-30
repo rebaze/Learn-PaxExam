@@ -25,9 +25,8 @@ import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.TestProbeProvider;
-import org.ops4j.pax.exam.spi.container.PlumbingContext;
 
-import static org.ops4j.pax.exam.LibraryOptions.*;
+import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
 
 /**
@@ -66,9 +65,8 @@ public class LessonTest {
          * So have a look at this projects pom.xml for some insight what choices you get from there.
          *
          */
-    	ExamSystem system = createSystem( new Option[]{
-            junitBundles(),
-            easyMockBundles()
+    	ExamSystem system = createTestSystem( new Option[]{
+            
         });
 
         TestProbeProvider p = makeProbe(system);

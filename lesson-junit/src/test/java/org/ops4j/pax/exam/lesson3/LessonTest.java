@@ -31,7 +31,7 @@ import org.ops4j.pax.exam.spi.reactors.AllConfinedStagedReactorFactory;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
 import org.slf4j.LoggerFactory;
 
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createSystem;
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createTestSystem;
 import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createContainer;
 
 import static org.hamcrest.core.Is.*;
@@ -39,9 +39,6 @@ import static org.hamcrest.core.IsNull.*;
 import static org.junit.Assert.*;
 import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.OptionUtils.*;
-
-import static org.ops4j.pax.exam.LibraryOptions.*;
-import static org.ops4j.pax.exam.container.def.PaxRunnerOptions.*;
 
 
 /**
@@ -115,7 +112,7 @@ public class LessonTest {
     
     public static void main(String[] args) throws TimeoutException, IOException {
     	createContainer(
-    			createSystem(
+    			createTestSystem(
     					combine(
 		    			new LessonTest().config(),
 		    			profile("gogo")

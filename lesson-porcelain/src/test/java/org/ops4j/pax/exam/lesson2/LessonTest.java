@@ -15,10 +15,8 @@
  */
 package org.ops4j.pax.exam.lesson2;
 
-import static org.ops4j.pax.exam.LibraryOptions.easyMockBundles;
-import static org.ops4j.pax.exam.LibraryOptions.junitBundles;
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createSystem;
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.getTestContainerFactory;
+import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
+import static org.ops4j.pax.exam.CoreOptions.*;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -59,14 +57,13 @@ public class LessonTest {
         throws Exception
     {
         TestContainerFactory factory = getTestContainerFactory();
-        ExamSystem system = createSystem(new Option[]{ junitBundles(), easyMockBundles() });
-
-        ExxamReactor reactor = new DefaultExamReactor( factory );
+        
+        ExamSystem system = createTestSystem();
+        ExxamReactor reactor = new DefaultExamReactor( system, factory );
 
         TestProbeProvider probe = makeProbe(system);
-
         reactor.addProbe( probe );
-        reactor.addConfiguration( system );
+        reactor.addConfiguration( options( junitBundles(), easyMockBundles() ) );
 
         StagedExamReactorFactory strategy = new AllConfinedStagedReactorFactory();
         StagedExamReactor stagedReactor = reactor.stage( strategy );

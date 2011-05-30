@@ -36,38 +36,24 @@
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.framework</artifactId>
-			<version>3.2.1</version>
+			<version>${felixversion}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-link-mvn</artifactId>
+			<artifactId>pax-exam-link-assembly</artifactId>
 			<version>${paxexamversion}</version>
 			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-link</artifactId>
+			<artifactId>pax-url-aether</artifactId>
 			<version>${paxurlversion}</version>
 			<scope>test</scope>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-mvn</artifactId>
-			<version>${paxurlversion}</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-classpath</artifactId>
-			<version>${paxurlversion}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
 			<artifactId>pax-exam-testforge</artifactId>

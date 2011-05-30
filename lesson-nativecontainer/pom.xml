@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.okidokiteam.learnpaxexam</groupId>
-    <artifactId>lesson-porcelain</artifactId>
+    <artifactId>lesson-nativecontainer</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - Porcelain</name>
+    <name>Pax Exam Learning Center - Native Container</name>
 
     <dependencies>
         <dependency>
@@ -26,18 +26,18 @@
         <!-- Pax Exam Dependencies -->
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-spi</artifactId>
+            <artifactId>pax-exam-junit4</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
+            <artifactId>pax-exam-container-paxrunner</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-link-assembly</artifactId>
@@ -45,26 +45,10 @@
             <scope>test</scope>
         </dependency>
         
-        <dependency>
-            <groupId>org.ops4j.pax.url</groupId>
-            <artifactId>pax-url-aether</artifactId>
-            <version>${paxurlversion}</version>
-            <scope>test</scope>
-        </dependency>
-        
-
-        <!-- OSGi R4 frameworks -->
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>${felixversion}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.sonatype.tycho</groupId>
-            <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.6.2.R36x_v20110210</version>
+         <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-testforge</artifactId>
+            <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
 
@@ -76,6 +60,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>org.ops4j.pax.runner</groupId>
+        	<artifactId>pax-runner-no-jcl</artifactId>
+        	<version>${paxrunnerversion}</version>
+        	<scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
