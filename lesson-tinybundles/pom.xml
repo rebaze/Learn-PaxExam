@@ -14,7 +14,7 @@
     <artifactId>lesson-tinybundles</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - Tinybundles</name>
+     <name>Pax Exam Strategy Guide - Tinybundles</name>
 
     <dependencies>
         <dependency>

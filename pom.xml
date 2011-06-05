@@ -6,10 +6,10 @@
     <version>0.9.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Pax Exam Learning Center</name>
+    <name>Pax Exam Strategy Guide</name>
 
     <properties>
-        <paxexamversion>2.1.0-SNAPSHOT</paxexamversion>
+        <paxexamversion>2.1.0</paxexamversion>
         <paxrunnerversion>1.7.4</paxrunnerversion>
         <paxurlversion>1.3.3</paxurlversion>
         <felixversion>3.2.2</felixversion>

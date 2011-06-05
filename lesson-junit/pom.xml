@@ -14,7 +14,7 @@
     <artifactId>lesson-junit</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - JUnit4</name>
+    <name>Pax Exam Strategy Guide - JUnit4</name>
 
     <dependencies>
         <dependency>

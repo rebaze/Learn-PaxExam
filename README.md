@@ -1,4 +1,4 @@
-# Welcome to the Pax Exam Learning Project
+# Welcome to the Pax Exam Strategy Guide
 
 We assume you are familar with the basic principles of OSGi.
 Otherwise, here are some interesting links to get to know OSGi any better:
@@ -179,6 +179,8 @@ Here's what you find and the recommended order of reading:
 
 * <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-player>
 
+* <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-servermode>
+
 
 When reading the examples, its best to have a focus on:
 
@@ -186,6 +188,16 @@ When reading the examples, its best to have a focus on:
 
 * the Test Sources, which are documented extensively.
 
+
+# Server Mode
+
+It may sound a bit odd but Pax Exam is also an interesting bootsprapper for OSGi Platforms.
+You can use regular Pax Exam Configuration API (those Options you are collecting) to launch a OSGi framework solely for launching the
+an OSGi platform and not running automated tests (and shut down the system after that automatically).
+
+For an example, please have a look at 
+
+  
   
 # Differences to Pax Exam 1.x
 

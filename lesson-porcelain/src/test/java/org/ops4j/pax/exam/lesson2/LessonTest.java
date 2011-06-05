@@ -33,6 +33,7 @@ import org.ops4j.pax.exam.spi.StagedExamReactor;
 import org.ops4j.pax.exam.spi.StagedExamReactorFactory;
 import org.ops4j.pax.exam.spi.driversupport.DefaultExamReactor;
 import org.ops4j.pax.exam.spi.reactors.AllConfinedStagedReactorFactory;
+import org.ops4j.pax.exam.spi.reactors.EagerSingleStagedReactorFactory;
 
 /**
  * This is a copy of lesson 1 but with a higher level abstraction on how we interact with TestContainers.
@@ -57,15 +58,15 @@ public class LessonTest {
         throws Exception
     {
         TestContainerFactory factory = getTestContainerFactory();
-        
         ExamSystem system = createTestSystem();
+
         ExxamReactor reactor = new DefaultExamReactor( system, factory );
 
         TestProbeProvider probe = makeProbe(system);
         reactor.addProbe( probe );
         reactor.addConfiguration( options( junitBundles(), easyMockBundles() ) );
 
-        StagedExamReactorFactory strategy = new AllConfinedStagedReactorFactory();
+        StagedExamReactorFactory strategy = new EagerSingleStagedReactorFactory();
         StagedExamReactor stagedReactor = reactor.stage( strategy );
         try {
             for( TestAddress call : stagedReactor.getTargets() ) {

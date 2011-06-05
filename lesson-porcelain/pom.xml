@@ -13,9 +13,8 @@
     <groupId>com.okidokiteam.learnpaxexam</groupId>
     <artifactId>lesson-porcelain</artifactId>
     <version>0.9.0-SNAPSHOT</version>
-
-    <name>Pax Exam Learning Center - Porcelain</name>
-
+	<name>Pax Exam Strategy Guide - Porcelain</name>
+    
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

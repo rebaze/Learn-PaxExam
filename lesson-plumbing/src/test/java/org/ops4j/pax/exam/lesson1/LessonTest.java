@@ -50,6 +50,7 @@ import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
  */
 public class LessonTest {
 
+
     @Test
     public void testLesson1Unit1()
         throws Exception
@@ -66,7 +67,8 @@ public class LessonTest {
          *
          */
     	ExamSystem system = createTestSystem( new Option[]{
-            
+            allFrameworksVersions(),
+            equinox()
         });
 
         TestProbeProvider p = makeProbe(system);
@@ -126,6 +128,7 @@ public class LessonTest {
 
         // passing parameters.
         probe.addTest( Probe.class, "probe3", "Parameter" );
+
 
         return probe.build();
     }

@@ -15,7 +15,7 @@
 	<artifactId>lesson-cxf</artifactId>
 	<version>0.9.0-SNAPSHOT</version>
 
-	<name>Pax Exam Learning Center - CXF</name>
+	<name>Pax Exam Strategy Guide - CXF</name>
 
 	<dependencies>
 

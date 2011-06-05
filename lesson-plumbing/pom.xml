@@ -14,7 +14,7 @@
     <artifactId>lesson-plumbing</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - Plumbing</name>
+    <name>Pax Exam Strategy Guide - Plumbing</name>
 
     <dependencies>
         <dependency>
