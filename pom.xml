@@ -14,7 +14,18 @@
         <paxurlversion>1.3.3</paxurlversion>
         <felixversion>3.2.2</felixversion>
     </properties>
-    
+    <build>
+       <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.5</source>
+              <target>1.5</target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
     <modules>
     	 <module>lesson-plumbing</module>
          <module>lesson-porcelain</module>
