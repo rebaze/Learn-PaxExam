@@ -25,7 +25,7 @@
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
     <bean id="DoSomething" class="org.ops4j.pax.exam.apart.DoSomething" destroy-method="shutdown"/>
-    
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
 </beans>

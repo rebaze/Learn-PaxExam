@@ -14,7 +14,7 @@
     <artifactId>lesson-junit</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - JUnit4</name>
+    <name>Pax Exam Strategy Guide - JUnit4</name>
 
     <dependencies>
         <dependency>
@@ -40,7 +40,7 @@
 
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-link-mvn</artifactId>
+            <artifactId>pax-exam-link-assembly</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
@@ -63,7 +63,7 @@
         <dependency>
         	<groupId>org.ops4j.pax.runner</groupId>
         	<artifactId>pax-runner-no-jcl</artifactId>
-        	<version>1.7.2-SNAPSHOT</version>
+        	<version>${paxrunnerversion}</version>
         	<scope>test</scope>
         </dependency>
     </dependencies>

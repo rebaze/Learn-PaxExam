@@ -1,72 +1,80 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.okidokiteam.learnpaxexam</groupId>
-	    <artifactId>learn-exam-reactor</artifactId>
-	    <version>0.9.0-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>com.okidokiteam.learnpaxexam</groupId>
+		<artifactId>learn-exam-reactor</artifactId>
+		<version>0.9.0-SNAPSHOT</version>
+	</parent>
 
-    <groupId>com.okidokiteam.learnpaxexam</groupId>
-    <artifactId>lesson-cxf</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
+	<groupId>com.okidokiteam.learnpaxexam</groupId>
+	<artifactId>lesson-cxf</artifactId>
+	<version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Learning Center - CXF</name>
+	<name>Pax Exam Strategy Guide - CXF</name>
 
-    <dependencies>
-       
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-junit4</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
+	<dependencies>
 
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-container-native</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>3.2.1</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-junit4</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-link-mvn</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-        
-         <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-testforge</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-container-native</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.framework</artifactId>
+			<version>${felixversion}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <!-- For sane logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.ops4j.pax.tinybundles</groupId>
-            <artifactId>pax-tinybundles-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-link-assembly</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ops4j.pax.url</groupId>
+			<artifactId>pax-url-aether</artifactId>
+			<version>${paxurlversion}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ops4j.pax.exam</groupId>
+			<artifactId>pax-exam-testforge</artifactId>
+			<version>${paxexamversion}</version>
+			<scope>test</scope>
+		</dependency>
 
-    </dependencies>
+		<!-- For sane logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ops4j.pax.tinybundles</groupId>
+			<artifactId>pax-tinybundles-core</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 </project>

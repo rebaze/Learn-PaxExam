@@ -16,15 +16,17 @@
 package org.ops4j.pax.exam.lesson1;
 
 import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Test;
+import org.ops4j.pax.exam.ExamSystem;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.TestProbeProvider;
-import org.ops4j.pax.exam.spi.container.PlumbingContext;
 
-import static org.ops4j.pax.exam.LibraryOptions.*;
+import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
 
 /**
@@ -48,6 +50,7 @@ import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
  */
 public class LessonTest {
 
+
     @Test
     public void testLesson1Unit1()
         throws Exception
@@ -63,12 +66,12 @@ public class LessonTest {
          * So have a look at this projects pom.xml for some insight what choices you get from there.
          *
          */
-        Option[] options = new Option[]{
-            junitBundles(),
-            easyMockBundles()
-        };
+    	ExamSystem system = createTestSystem( new Option[]{
+            allFrameworksVersions(),
+            equinox()
+        });
 
-        TestProbeProvider p = makeProbe();
+        TestProbeProvider p = makeProbe(system);
 
         /**
          * Here's where Pax Exam comes to life: you get a {@link TestContainerFactory}
@@ -92,7 +95,7 @@ public class LessonTest {
          * - stop
          *
          */
-        for( TestContainer testContainer : getTestContainerFactory().parse( options ) ) {
+        for( TestContainer testContainer : getTestContainerFactory().create( system ) ) {
             try {
                 testContainer.start();
                 testContainer.install( p.getStream() );
@@ -114,16 +117,18 @@ public class LessonTest {
      *
      * @throws java.io.IOException Problems
      */
-    private TestProbeProvider makeProbe()
+    private TestProbeProvider makeProbe(ExamSystem system)
         throws IOException
     {
-        TestProbeBuilder probe = new PlumbingContext().createProbe();
+    	
+        TestProbeBuilder probe = system.createProbe( new Properties() );
         probe.addTest( Probe.class, "probe1" );
 
         probe.addTest( Probe.class, "probe2" );
 
         // passing parameters.
         probe.addTest( Probe.class, "probe3", "Parameter" );
+
 
         return probe.build();
     }

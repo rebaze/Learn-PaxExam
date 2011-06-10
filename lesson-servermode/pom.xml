@@ -11,63 +11,40 @@
     </parent>
 
     <groupId>com.okidokiteam.learnpaxexam</groupId>
-    <artifactId>lesson-player</artifactId>
+    <artifactId>lesson-servermode</artifactId>
     <version>0.9.0-SNAPSHOT</version>
 
-    <name>Pax Exam Strategy Guide - Player</name>
-
+     <name>Pax Exam Strategy Guide - Server Mode</name>
 
     <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-
         <!-- Pax Exam Dependencies -->
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-player</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-testforge</artifactId>
-            <version>${paxexamversion}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
             <artifactId>pax-exam-container-native</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+        	<groupId>org.apache.felix</groupId>
+        	<artifactId>org.apache.felix.framework</artifactId>
+        	<version>${felixversion}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.ops4j.pax.exam</groupId>
-            <artifactId>pax-exam-link-mvn</artifactId>
+            <artifactId>pax-exam-link-assembly</artifactId>
             <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- OSGi R4 frameworks -->
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.framework</artifactId>
-            <version>3.2.1</version>
+        
+         <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-testforge</artifactId>
+            <version>${paxexamversion}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.sonatype.tycho</groupId>
-            <artifactId>org.eclipse.osgi</artifactId>
-            <version>3.6.2.R36x_v20110210</version>
-            <scope>test</scope>
-        </dependency>
-
 
         <!-- For sane logging -->
         <dependency>

@@ -1,4 +1,4 @@
-# Welcome to the Pax Exam Learning Project
+# Welcome to the Pax Exam Strategy Guide
 
 We assume you are familar with the basic principles of OSGi.
 Otherwise, here are some interesting links to get to know OSGi any better:
@@ -67,7 +67,6 @@ programatically via static method calls, that are imported "statically" so it gi
 You add an import like this to the class that configures your test setup (this might be the Test Class itself or it might be entirely elsewhere, you can put it like you need it. Its simple Java laws).
 
     import static org.ops4j.pax.exam.CoreOptions.*;
-    import static org.ops4j.pax.exam.LibraryOptions.*;
 
 This will give you the chance to use one or more of the factory methods. They all will return something that is assignable to
 
@@ -77,15 +76,8 @@ You will use a collection of this type via passing it to the TestContainer at co
 Again, this is knowledge that you should have heard once, depending on how you will use Pax Exam you might not really care about where Options are used.
 
 What matters is, that the following imports might be helpful to discover options for your Test Case and eventually use them.
-Note that those classes live either in Pax Exam API (artifactId=pax-exam) or in Container specific artifacts like the following:
 
-    org.ops4j.pax.exam.container.def.PaxRunnerOptions
-    
-The class above comes from the PaxRunner-TestContainer implementation. Thus, it contains options that are just recognized when using the PaxRunner-TestContainer.
-Read below on how to "select" a test container implementation or just look at the tutorials at <https://github.com/tonit/Learn-PaxExam>.
-
-Those options form a lose collection (as mentioned). It does not necessarily mean that all options will be recognized or supported. 
-Its just a (the) way to configure Pax Exam.
+Pax Exam will warn you if you are using options that are not supported by the container you selected. (Read below about Container selection)
 
 # Test Containers
 
@@ -181,9 +173,15 @@ Here's what you find and the recommended order of reading:
 
 * <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-junit>
 
+* <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-nativecontainer>
+
+* <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-paxrunnercontainer>
+
 * <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-player>
 
 * <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-cxf>
+
+* <https://github.com/tonit/Learn-PaxExam/tree/master/lesson-servermode>
 
 When reading the examples, its best to have a focus on:
 
@@ -191,6 +189,16 @@ When reading the examples, its best to have a focus on:
 
 * the Test Sources, which are documented extensively.
 
+
+# Server Mode
+
+It may sound a bit odd but Pax Exam is also an interesting bootsprapper for OSGi Platforms.
+You can use regular Pax Exam Configuration API (those Options you are collecting) to launch a OSGi framework solely for launching the
+an OSGi platform and not running automated tests (and shut down the system after that automatically).
+
+For an example, please have a look at 
+
+  
   
 # Differences to Pax Exam 1.x
 
