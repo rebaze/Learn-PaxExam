@@ -55,14 +55,14 @@ Because your test could end up in a totally different JVM (read Pax Runner Conta
 
 * A probe carries your tests only. Everything that is not in your "test-classes" + used inside your test-method, you need to have that provided by another bundle.
 
-* You may optain context information via Parameter injection. See the Code Examples linked below for clarification. Its really simple.
+* You may obtain context information via Parameter injection. See the Code Examples linked below for clarification. Its really simple.
 
 
 # Options
 
 The option system is quite unique to Pax Exam and is crucial to understand it.
 Simply put, you will configure your Test Setup (which includes which bundles you want to load, perhaps which frameworks (depends Test Container choice), etc.)
-programatically via static method calls, that are imported "statically" so it give you quite distraction-free, DSL-like configuration options with full IDE-code completion support.
+programmatically via static method calls, that are imported "statically" so it give you quite distraction-free, DSL-like configuration options with full IDE-code completion support.
 
 You add an import like this to the class that configures your test setup (this might be the Test Class itself or it might be entirely elsewhere, you can put it like you need it. Its simple Java laws).
 
