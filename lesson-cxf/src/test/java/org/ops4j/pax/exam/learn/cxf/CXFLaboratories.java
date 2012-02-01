@@ -86,9 +86,9 @@ public class CXFLaboratories {
 				mavenBundle().groupId("org.springframework.osgi").artifactId("spring-osgi-annotation").version("1.2.1"),
 				//mavenBundle().groupId( "org.ops4j.pax.url").artifactId("pax-url-link" ).version( "1.3.2" ),
 				//mavenBundle().groupId( "org.ops4j.pax.url").artifactId("pax-url-aether" ).version( "1.3.2" ),
-				mavenBundle().groupId( "org.ops4j.pax.tinybundles" ).artifactId( "pax-tinybundles-core" ).version( "1.0.0-SNAPSHOT" ),
+				mavenBundle().groupId( "org.ops4j.pax.tinybundles" ).artifactId( "tinybundles" ).version( "1.0.0" ),
 				
-				provision( bundle( with() )
+				provision( bundle()
 				        .set( "Import-Package", "org.apache.cxf.bus.spring,org.slf4j" )
 				        .set("DynamicImport-Package","*")
 						.add (DoSomething.class )

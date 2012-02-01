@@ -20,7 +20,6 @@ import java.io.IOException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.osgi.framework.BundleContext;
-import org.ops4j.pax.exam.Inject;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -44,13 +43,13 @@ import static org.ops4j.pax.exam.OptionUtils.*;
 
 /**
  * This is what's probably most known to Pax Exam 1.x users.
- * You can recognize the "Junit Driver" approach by the @RunWith() annotation at class level.
+ * You can recognize the "JUnit Driver" approach by the @RunWith() annotation at class level.
  *
  * This overloads JUnit4s default runner so that Pax Exam is in full control of:
  * - the test roaster
- * - the test invokation
+ * - the test invocation
  *
- * So whats the test roaster ?
+ * So what's the test roaster ?
  * You know methods annotated with @Test annotations from JUnit4 API, right ?
  * This is the standard roaster. Those will appear in your Test Runner when launching this class in your IDE using "Run with JUnit..".
  *
@@ -58,11 +57,11 @@ import static org.ops4j.pax.exam.OptionUtils.*;
  * (Remember the TestContainerFactory.parse() returning a list of TestContainers ?)
  *
  * So wouldn't it be nice to have that reflected in your JUnit Roaster ?
- * Thats what the @RunWith(JUnit4TestRunner.class) does. Pax Exam re-aranges the JUnit4 Roaster and gives you a single entry for each physical test.
- * In this lesson we are using the NativeTestContainer implementation (see the pom.xml), and additional put two OSGi Frameworks to it: Felix and Equinox.
+ * Thats what the @RunWith(JUnit4TestRunner.class) does. Pax Exam rearranges the JUnit4 Roaster and gives you a single entry for each physical test.
+ * In this lesson we are using the PaxRunnerTestContainer implementation (see the pom.xml), and additional put two OSGi Frameworks to it: Felix and Equinox.
  * You will see each of the @Test methods below twice. Once for each framework.
  *
- * The @Configuration is a desclarative way of what you did manually in the previous lessons. Now you only return Option[] in any @Configuration-annotated method
+ * The @Configuration is a declarative way of what you did manually in the previous lessons. Now you only return Option[] in any @Configuration-annotated method
  * and you are set.
  * A probe will be generated underneath with every @Test put into it.
  *
@@ -101,7 +100,7 @@ import static org.ops4j.pax.exam.OptionUtils.*;
 @ExamReactorStrategy( AllConfinedStagedReactorFactory.class )
 public class LessonTest {
 
-    @Configuration()
+    @Configuration
     public Option[] config()
     {
         return options(

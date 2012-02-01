@@ -23,7 +23,7 @@ import org.osgi.framework.BundleContext;
  * Pax Exam will calculate a fairly relaxed Manifest Metadata for you.
  * You don't have access to the manifest at this point.
  *
- * Everything that you use (classes) must be exported by othher bundles in your setup.
+ * Everything that you use (classes) must be exported by other bundles in your setup.
  * Its import to understand that this class will be put into a bundle, possibly transfered to another JVM (depending on which TestContainer you pick), and executed remotly.
  * Consider this, specially regarding Exceptions, Parameters etc.
  *
@@ -40,13 +40,11 @@ import org.osgi.framework.BundleContext;
  */
 public class Probe {
 
-    @SuppressWarnings( "unused" )
     public void probe1()
     {
         System.out.println( "----- > Inside OSGi. No Bundle Context :( " );
     }
 
-    @SuppressWarnings( "unused" )
     public void probe2( BundleContext ctx )
     {
         System.out.println( "----- > This Bundles name is " + ctx.getBundle().getSymbolicName() );
@@ -55,7 +53,6 @@ public class Probe {
         }
     }
 
-    @SuppressWarnings( "unused" )
     public void probe3( BundleContext ctx, String parameter )
     {
         System.out.println( "Parameter: " + parameter );
