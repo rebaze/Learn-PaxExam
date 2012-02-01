@@ -20,7 +20,6 @@ import org.ops4j.pax.exam.testforge.WaitForService;
 import org.osgi.service.log.LogService;
 import org.ops4j.pax.exam.player.Player;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
-import org.ops4j.pax.exam.testforge.WaitForService;
 import org.slf4j.LoggerFactory;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
