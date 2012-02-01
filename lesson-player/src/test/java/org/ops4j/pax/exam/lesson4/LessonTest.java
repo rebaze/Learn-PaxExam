@@ -20,7 +20,6 @@ import org.ops4j.pax.exam.testforge.WaitForService;
 import org.osgi.service.log.LogService;
 import org.ops4j.pax.exam.player.Player;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
-import org.ops4j.pax.exam.testforge.WaitForService;
 import org.slf4j.LoggerFactory;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
@@ -35,7 +34,7 @@ import static org.ops4j.pax.exam.CoreOptions.*;
  * - add Tests/Probe
  * .. and you are ready to "play" (see  {@link org.ops4j.pax.exam.player.Player#play()}
  *
- * This can be used anywwhere, not only in JUnit tests.
+ * This can be used anywhere, not only in JUnit tests.
  */
 public class LessonTest {
 

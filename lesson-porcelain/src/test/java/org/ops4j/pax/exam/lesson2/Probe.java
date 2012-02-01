@@ -27,13 +27,11 @@ import org.osgi.framework.BundleContext;
  */
 public class Probe {
 
-    @SuppressWarnings( "unused" )
     public void probe1()
     {
         System.out.println( "----- > Inside OSGi. No Bundle Context :( " );
     }
 
-    @SuppressWarnings( "unused" )
     public void probe2( BundleContext ctx )
     {
         System.out.println( "----- > This Bundles name is " + ctx.getBundle().getSymbolicName() );

@@ -20,7 +20,6 @@ import java.util.Properties;
 
 import org.junit.Test;
 import org.ops4j.pax.exam.ExamSystem;
-import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TestAddress;
 import org.ops4j.pax.exam.TestContainer;
 import org.ops4j.pax.exam.TestProbeBuilder;
@@ -31,9 +30,9 @@ import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
 
 /**
  * This is the very first Pax Exam Lesson.
- * It shows you Pax Exam's first, and most routh - down to earth - API. The so called Plumbing API.
- * You regnize it like so:
- * 1. No @RunWith annotation on the Test Class. So plain Junit. You can even use TestNG or a Main class. Or any other means of running java.
+ * It shows you Pax Exam's first, and most rough - down to earth - API. The so called Plumbing API.
+ * You recognize it like so:
+ * 1. No @RunWith annotation on the Test Class. So plain JUnit. You can even use TestNG or a Main class. Or any other means of running java.
  * 2. You use TestContainer lifecycle methods like start() and stop() and install().
  * 3. You need to put together the probe "yourself" (select class and method).
  *
@@ -43,7 +42,7 @@ import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
  *
  * The bad parts:
  * - fairly low level (lifecycle)
- * - handroll your tests in another class
+ * - hand roll your tests in another class
  * - you don't really see failures of a single test container or test. Its one "big" method for the JUnit Runner.
  *
  * Watch: <VIDEOLINK> for an hands-on description.
@@ -66,20 +65,20 @@ public class LessonTest {
          * So have a look at this projects pom.xml for some insight what choices you get from there.
          *
          */
-    	ExamSystem system = createTestSystem( new Option[]{
+    	ExamSystem system = createTestSystem( 
             allFrameworksVersions(),
             equinox()
-        });
+        );
 
         TestProbeProvider p = makeProbe(system);
 
         /**
          * Here's where Pax Exam comes to life: you get a {@link TestContainerFactory}
          * usually via {@link org.ops4j.pax.exam.spi.container.PaxExamRuntime#getTestContainerFactory()} .
-         * This looks up apropriate classes in your classpath.
+         * This looks up appropriate classes in your classpath.
          * By having either "pax-exam-container-native" or "pax-exam-container-paxrunner" in your pom.xml/test-classpath,
          * you will get the desired container factory.
-         * The "parse" call creates one or more TestContainer instances.
+         * The "create" call creates one or more TestContainer instances.
          * Why is that ?
          * Well, depending on which container you select and what options you pass in, you might get more than one physical container.
          * In this example (pom.xml includes the pax-exam-container-native) you will get 2 Test Container instances.
@@ -89,7 +88,7 @@ public class LessonTest {
          * This is how you end up with two container instances here. Likewise you'll need to iterate over them.
          *
          * The rest is simple lifecycle management:
-         * - starting (incorparates all options you passed in at construction time),
+         * - starting (incorporates all options you passed in at construction time),
          * - installing the extra bundle (probe!)
          * - invoking all tests that have been added to the probe before
          * - stop
@@ -111,7 +110,7 @@ public class LessonTest {
     /**
      * Here's how you make a probe. As mentioned in {@link Probe} its a bundle that is computed on the fly.
      * You - as a user - just add "tests", and invoke "build() at the very end. You will end up with something ({@link TestProbeProvider})
-     * where you get the physicall bundle ({@link org.ops4j.pax.exam.TestProbeProvider#getStream()}) from.
+     * where you get the physical bundle ({@link org.ops4j.pax.exam.TestProbeProvider#getStream()}) from.
      *
      * @return the Probe, really do used.
      *

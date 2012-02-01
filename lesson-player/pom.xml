@@ -10,10 +10,7 @@
 	    <version>0.9.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.okidokiteam.learnpaxexam</groupId>
     <artifactId>lesson-player</artifactId>
-    <version>0.9.0-SNAPSHOT</version>
-
     <name>Pax Exam Strategy Guide - Player</name>
 
 

@@ -11,10 +11,7 @@
 		<version>0.9.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.okidokiteam.learnpaxexam</groupId>
 	<artifactId>lesson-cxf</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
-
 	<name>Pax Exam Strategy Guide - CXF</name>
 
 	<dependencies>
@@ -70,8 +67,8 @@
 
 		<dependency>
 			<groupId>org.ops4j.pax.tinybundles</groupId>
-			<artifactId>pax-tinybundles-core</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<artifactId>tinybundles</artifactId>
+			<version>1.0.0</version>
 			<scope>test</scope>
 		</dependency>
 
