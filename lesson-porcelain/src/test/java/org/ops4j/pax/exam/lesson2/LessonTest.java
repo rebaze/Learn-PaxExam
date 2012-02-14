@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.exam.lesson2;
 
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
+import static org.ops4j.pax.exam.spi.PaxExamRuntime.*;
 import static org.ops4j.pax.exam.CoreOptions.*;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ import org.ops4j.pax.exam.TestProbeProvider;
 import org.ops4j.pax.exam.spi.ExxamReactor;
 import org.ops4j.pax.exam.spi.StagedExamReactor;
 import org.ops4j.pax.exam.spi.StagedExamReactorFactory;
-import org.ops4j.pax.exam.spi.driversupport.DefaultExamReactor;
+import org.ops4j.pax.exam.spi.DefaultExamReactor;
 import org.ops4j.pax.exam.spi.reactors.EagerSingleStagedReactorFactory;
 
 /**
@@ -88,7 +88,7 @@ public class LessonTest {
     private TestProbeProvider makeProbe(ExamSystem system)
         throws IOException
     {
-        TestProbeBuilder probe = system.createProbe( new Properties() );
+        TestProbeBuilder probe = system.createProbe();
         probe.addTest(
             Probe.class, "probe1"
         );

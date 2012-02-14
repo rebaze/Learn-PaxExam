@@ -31,8 +31,8 @@ import org.ops4j.pax.exam.spi.reactors.AllConfinedStagedReactorFactory;
 import org.ops4j.pax.exam.testforge.SingleClassProvider;
 import org.slf4j.LoggerFactory;
 
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createTestSystem;
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.createContainer;
+import static org.ops4j.pax.exam.spi.PaxExamRuntime.createTestSystem;
+import static org.ops4j.pax.exam.spi.PaxExamRuntime.createContainer;
 
 import static org.hamcrest.core.Is.*;
 import static org.hamcrest.core.IsNull.*;

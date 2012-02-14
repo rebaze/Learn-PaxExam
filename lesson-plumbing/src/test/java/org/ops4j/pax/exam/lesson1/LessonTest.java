@@ -26,7 +26,7 @@ import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.TestProbeProvider;
 
 import static org.ops4j.pax.exam.CoreOptions.*;
-import static org.ops4j.pax.exam.spi.container.PaxExamRuntime.*;
+import static org.ops4j.pax.exam.spi.PaxExamRuntime.*;
 
 /**
  * This is the very first Pax Exam Lesson.
@@ -120,7 +120,7 @@ public class LessonTest {
         throws IOException
     {
     	
-        TestProbeBuilder probe = system.createProbe( new Properties() );
+        TestProbeBuilder probe = system.createProbe();
         probe.addTest( Probe.class, "probe1" );
 
         probe.addTest( Probe.class, "probe2" );
